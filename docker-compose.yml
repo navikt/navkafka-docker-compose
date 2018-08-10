@@ -1,0 +1,31 @@
+version: '3'
+services:
+  openldap:
+    build: ldap
+    container_name: ldap
+    ports:
+    - "10636:636"
+    - "10389:389"
+    environment:
+    - "LDAP_TLS_VERIFY_CLIENT=try"
+  zookeeper:
+    #image: confluentinc/cp-zookeeper
+    build: zookeeper
+    container_name: zookeeper
+    environment:
+    - "ZOOKEEPER_CLIENT_PORT=2181"
+    - "ZOOKEEPER_AUTH_PROVIDER_1=org.apache.zookeeper.server.auth.SASLAuthenticationProvider"
+    ports:
+      - "2181:2181"
+  kafka:
+    build: kafka
+    container_name: kafka
+    environment:
+    - "KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181"
+    - "KAFKA_LISTENERS=SASL_PLAINTEXT://0.0.0.0:9092"
+    - "KAFKA_ADVERTISED_LISTENERS=SASL_PLAINTEXT://localhost:9092"
+    ports:
+    - "9092:9092"
+    depends_on:
+    - "zookeeper"
+    - "openldap"

@@ -1,0 +1,20 @@
+#host of the LDAP server
+host: ldap
+#port of the LDAP server
+port: 636
+# connectionTimout in milliseconds for LDAP
+connTimeout: 10000
+# Placement of users in LDAP tree
+usrBaseDN: ou=ServiceAccounts,dc=test,dc=local
+# User attribute for DN completion
+usrUid: uid
+# Placement of groups in LDAP tree
+grpBaseDN: OU=kafka,OU=AccountGroupNotInRemedy,OU=Groups,OU=NAV,OU=BusinessUnits,DC=test,DC=local
+# Group attribute for DN completion
+grpUid: cn
+# Group membership attribute name
+grpAttrName: member
+# Lifetime of user entry in cache after cache-write - IN MINUTES
+usrCacheExpire: 6
+# Lifetime of group entry in cache after cache-write - IN MINUTES
+grpCacheExpire: 6
