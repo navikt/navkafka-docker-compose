@@ -7,7 +7,7 @@ connTimeout: 10000
 # Placement of users in LDAP tree
 usrBaseDN: ou=ServiceAccounts,dc=test,dc=local
 # User attribute for DN completion
-usrUid: uid
+usrUid: cn
 # Placement of groups in LDAP tree
 grpBaseDN: OU=kafka,OU=AccountGroupNotInRemedy,OU=Groups,OU=NAV,OU=BusinessUnits,DC=test,DC=local
 # Group attribute for DN completion

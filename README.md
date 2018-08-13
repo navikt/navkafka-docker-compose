@@ -14,7 +14,7 @@ Running should be as simple as `docker-compose build`, then `docker-compose up`,
 These environment variables should work for running kafka-adminrest against docker-compose
 ```
 LDAP_CONNTIMEOUT=2000
-LDAP_USERATTRNAME=uid
+LDAP_USERATTRNAME=cn
 LDAP_AUTH_HOST=localhost
 LDAP_AUTH_PORT=10636
 LDAP_SRVUSERBASE=OU=ServiceAccounts,DC=test,DC=local
@@ -24,7 +24,7 @@ LDAP_GRPMEMBERATTRNAME=member
 LDAP_USER=igroup
 LDAP_PASSWORD=itest
 KAFKA_BROKERS=localhost:9092
-KAFKA_CLIENTID=swag
+KAFKA_CLIENTID=kafka-adminrest
 KAFKA_SECURITY=TRUE
 KAFKA_SECPROT=SASL_PLAINTEXT
 KAFKA_SASLMEC=PLAIN

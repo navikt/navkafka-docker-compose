@@ -3,6 +3,6 @@ changetype: modify
 delete: olcAccess
 -
 add: olcAccess
-olcAccess: to * by self write by dn="uid=igroup,ou=ServiceAccounts,{{ LDAP_BASE_DN }}" write by anonymous auth by * none
+olcAccess: to * by self write by dn="cn=igroup,ou=ServiceAccounts,{{ LDAP_BASE_DN }}" write by anonymous auth by * none
 olcAccess: to * by self read by dn.subtree="ou=ServiceAccounts,{{ LDAP_BASE_DN }}" write by * none
 olcAccess: to * by self read by dn.subtree="ou=ApplAccounts,ou=ServiceAccounts,{{ LDAP_BASE_DN }}" write by * none
