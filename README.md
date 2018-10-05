@@ -6,9 +6,25 @@ This is a docker-compose project for creating a simple production-alike environm
 * openldap as an replacement for Active Directory
 * confluent zookeeper docker image
 * confluent kafka docker image with the open source [NAV AD authorization addon](https://github.com/navikt/kafka-plain-saslserver-2-ad)
+* kafka-adminrest for automatic creation of topic and groups
 
 ## Running
 Running should be as simple as `docker-compose build`, then `docker-compose up`, the ports for ldap, zookeeper and kafka should be automatically exposed
+
+## General usage
+### Adding topics and groups
+#### Adding using oneshot
+To add using the oneshot api you can call it using
+```bash
+curl -X PUT "http://igroup:itest@localhost:8840/api/v1/oneshot" -H  "Accept: application/json" -H  "Content-Type: application/json" --data "@/path/to/file"`
+```
+For an example of the payload see example_navkafka.json
+
+
+#### Swagger documentation
+Swagger documentation is available at http://localhost:8840/api/v1/apidocs/index.html?url=swagger.json
+The image has support for kafka-adminrest, which means you can create topics using the oneshot or topic + group api
+kafka-adminrest vil være tilgjengelig på `http://localhost:8840`, ldap på `ldap://localhost:10636` og kafka på `SASL_PLAINTEXT://localhost:9092`
 
 ## Environment variables for kafka-adminrest
 These environment variables should work for running kafka-adminrest against docker-compose

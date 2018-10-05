@@ -1,0 +1,28 @@
+{
+    "topics": [
+      {
+        "topicName": "aapen-some-event",
+        "members": [
+          {"member":"srvc01", "role":"CONSUMER"},
+          {"member":"srvp01", "role":"PRODUCER"}
+        ],
+        "numPartitions": 3
+      },
+      {
+        "topicName": "privat-internal-topic",
+        "members": [
+          {"member":"srvc01", "role":"CONSUMER"},
+          {"member":"srvc01", "role":"PRODUCER"}
+        ],
+        "numPartitions": 3
+      },
+      {
+        "topicName": "aapen-some-other-consumer",
+        "members": [
+          {"member":"srvc02", "role":"CONSUMER"},
+          {"member":"srvp01", "role":"PRODUCER"}
+        ],
+        "numPartitions": 3
+      }
+    ]
+  }
