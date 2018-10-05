@@ -13,18 +13,24 @@ Running should be as simple as `docker-compose build`, then `docker-compose up`,
 
 ## General usage
 ### Adding topics and groups
+The image has support for kafka-adminrest, which means you can create topics using the oneshot or topic + group api
+
 #### Adding using oneshot
-To add using the oneshot api you can call it using
+You can add topics and groups using the oneshot API, an example command and payload is provided
 ```bash
 curl -X PUT "http://igroup:itest@localhost:8840/api/v1/oneshot" -H  "Accept: application/json" -H  "Content-Type: application/json" --data "@/path/to/file"`
 ```
-For an example of the payload see example_navkafka.json
+For an example of the payload see example_navkafka.json, oneshot also supports a few config attributes, check swagger for whats supported in oneshot
 
+#### Topics and groups api
+Other then the oneshot API you can also use the topics + groups api, usage of these endpoints is documented within swagger
 
 #### Swagger documentation
-Swagger documentation is available at http://localhost:8840/api/v1/apidocs/index.html?url=swagger.json
-The image has support for kafka-adminrest, which means you can create topics using the oneshot or topic + group api
-kafka-adminrest vil være tilgjengelig på `http://localhost:8840`, ldap på `ldap://localhost:10636` og kafka på `SASL_PLAINTEXT://localhost:9092`
+Swagger documentation for all the endpoints is available at http://localhost:8840/api/v1/apidocs/index.html?url=swagger.json
+
+#### Adding users to ldap
+Currently there are no easy ways to add users to LDAP, however its possible using the user igroup with the password itest and using the command `ldapadd`
+against the URL `ldap://localhost:10636`
 
 ## Environment variables for kafka-adminrest
 These environment variables should work for running kafka-adminrest against docker-compose
