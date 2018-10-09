@@ -42,7 +42,7 @@ services:
     - "zookeeper"
     - "openldap"
   kafkadminrest:
-    image: "repo.adeo.no:5443/integrasjon/kafka-adminrest:0.61"
+    image: "navikt/kafka-adminrest:0.62"
     ports: 
     - "8840:8080"
     environment:
