@@ -42,7 +42,7 @@ services:
     - "zookeeper"
     - "openldap"
   kafkadminrest:
-    image: "navikt/kafka-adminrest:0.62"
+    image: "navikt/kafka-adminrest"
     ports: 
     - "8840:8080"
     environment:
