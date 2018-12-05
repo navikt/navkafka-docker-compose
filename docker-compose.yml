@@ -66,3 +66,17 @@ services:
     - "LDAP_PORT=636"
     - "LDAP_AUTH_USERBASE=ou=Users,ou=NAV,dc=test,dc=local"
     - "KAFKA_PASSWORD=itest"
+  schema-registry:
+    image: "confluentinc/cp-schema-registry:5.0.1"
+    depends_on:
+    - "zookeeper"
+    - "kafka"
+    ports:
+    - "8081:8081"
+    environment:
+    - "SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS=SASL_PLAINTEXT://kafka:9093"
+    - "SCHEMA_REGISTRY_KAFKASTORE_SASL_MECHANISM=PLAIN"
+    - "SCHEMA_REGISTRY_KAFKASTORE_SASL_JAAS_CONFIG=org.apache.kafka.common.security.plain.PlainLoginModule required username=\"igroup\" password=\"itest\";"
+    - "SCHEMA_REGISTRY_KAFKASTORE_SECURITY_PROTOCOL=SASL_PLAINTEXT"
+    - "SCHEMA_REGISTRY_HOST_NAME=schema-registry"
+    - "SCHEMA_REGISTRY_LISTENERS=http://0.0.0.0:8081"
