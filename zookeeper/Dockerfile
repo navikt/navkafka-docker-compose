@@ -1,4 +1,4 @@
-FROM confluentinc/cp-zookeeper:5.0.0
+FROM confluentinc/cp-zookeeper:5.0.1
 
 COPY zookeeper_server_jaas.conf /etc/kafka
 
