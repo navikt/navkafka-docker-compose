@@ -82,3 +82,13 @@ services:
     - "SCHEMA_REGISTRY_KAFKASTORE_SECURITY_PROTOCOL=SASL_PLAINTEXT"
     - "SCHEMA_REGISTRY_HOST_NAME=schema-registry"
     - "SCHEMA_REGISTRY_LISTENERS=http://0.0.0.0:8081"
+  phpldapadmin:
+    image: osixia/phpldapadmin:latest
+    container_name: phpldapadmin
+    environment:
+      PHPLDAPADMIN_LDAP_HOSTS: "ldap"
+      PHPLDAPADMIN_HTTPS: "false"
+    ports:
+      - "8080:80"
+    depends_on:
+      - openldap
